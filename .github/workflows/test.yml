@@ -1,0 +1,24 @@
+name: AI Bridge Test
+
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - "ai-task.md"
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Show task
+        run: |
+          echo "=== ai-task.md ==="
+          cat ai-task.md || echo "No ai-task.md found"
+
+      - name: Environment check
+        run: |
+          node --version
+          npm --version
+          git status
